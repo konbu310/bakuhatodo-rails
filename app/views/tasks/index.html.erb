@@ -1,0 +1,27 @@
+<nav class="navbar navbar-light bg-light">
+  <p class="navbar-brand"><span>爆破</span> ToDo</p>
+ <%= link_to '新規タスク', new_task_path, remote: true, class: "btn btn-outline-primary" %>
+</nav>
+
+<% @tasks.each do |task| %>
+  <div class="card text-white bg-danger mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;　position: fixed;">
+    <div class="card-header"><%= task.deadline %></div>
+    <div class="card-body">
+      <h4 class="card-title"><%= task.title %></h4>
+      <p class="card-text"><%= task.content %></p>
+      <p>
+        <%= link_to '詳細', task %>
+        <%= link_to '編集', edit_task_path(task), remote: true %>
+        <%= link_to '爆破', task, method: :delete, data:
+          { 
+            title: "本当に爆破してよろしいですか?",
+            confirm: "やり遂げていないタスクを爆破するのはやめましょう。",
+            commit: "爆破！",
+            cancel: "やめる"
+          } %>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<div id="new_task_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

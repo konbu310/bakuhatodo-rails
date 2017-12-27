@@ -1,0 +1,92 @@
+<% if @status == 'success' %>
+  $("body").append("<%= j(render("panel", task: @task)) %>");
+<%  elsif @status == 'fail' %>
+  alert('error!');
+<% end %>
+
+$("#new_task_modal").modal("hide");
+
+var dragEvent, getHeight, getLeft, getTop, getWidth, pxTovh, pxTovw, resizeEvent;
+
+$(function() {
+  $('.panel').draggable({
+    stop: function(event, ui) {
+      var id;
+      id = $(this).attr('id');
+      dragEvent(id);
+    }
+  });
+  $('.panel').resizable({
+    stop: function(event, ui) {
+      var id;
+      id = $(this).attr('id');
+      resizeEvent(id);
+    }
+  });
+});
+
+getLeft = function(id) {
+  var l;
+  l = $('#' + id).css('left');
+  return l = parseInt(l);
+};
+
+getTop = function(id) {
+  var t;
+  t = $('#' + id).css('top');
+  return t = parseInt(t);
+};
+
+getWidth = function(id) {
+  var wid;
+  wid = $('#' + id).css('width');
+  return wid = parseInt(wid);
+};
+
+getHeight = function(id) {
+  var hei;
+  hei = $('#' + id).css('height');
+  return hei = parseInt(hei);
+};
+
+pxTovw = function(num) {
+  var w;
+  w = $(window).width();
+  w = parseInt(w);
+  return String(Math.round(num * (100 / w)));
+};
+
+pxTovh = function(num) {
+  var h;
+  h = $(window).height();
+  h = parseInt(h);
+  return String(Math.round(num * (100 / h)));
+};
+
+dragEvent = function(id) {
+  var left, top;
+  left = pxTovw(getLeft(id));
+  top = pxTovh(getTop(id));
+  console.log(top, left);
+  $.post('/position_update', {
+    id: id,
+    top: top,
+    left: left
+  }, function(data) {
+    console.log('ポジション保存');
+  });
+};
+
+resizeEvent = function(id) {
+  var height, width;
+  width = pxTovw(getWidth(id));
+  height = pxTovh(getHeight(id));
+  console.log(width, height);
+  $.post('/size_update', {
+    id: id,
+    width: width,
+    height: height
+  }, function(data) {
+    console.log('サイズ保存');
+  });
+};

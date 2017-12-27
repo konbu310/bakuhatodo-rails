@@ -1,0 +1,12 @@
+<div class="card text-white bg-danger mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;">
+    <div class="card-header"><%= task.deadline %></div>
+    <div class="card-body">
+      <h4 class="card-title"><%= task.title %></h4>
+      <p class="card-text"><%= task.content %></p>
+      <p>
+        <%= link_to '詳細', task %>
+        <%= link_to '編集', edit_task_path(task), remote: true %>
+        <%= link_to '爆破', task, method: :delete, data: { confirm: '爆破させますか？？' } %>
+      </p>
+    </div>
+  </div>

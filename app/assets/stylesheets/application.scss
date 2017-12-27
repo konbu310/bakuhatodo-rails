@@ -1,0 +1,54 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require jquery-ui
+ *= require_tree
+ *= require_self
+ */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4em;
+  overflow: hidden;
+}
+
+nav {
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 5vh;
+  border-bottom: 1px solid black;
+}
+
+p.navbar-brand {
+  font-size: 2vh;
+}
+
+p span {
+  color: red;
+}
+
+nav a.btn {
+font-size: 1.5vh;
+}

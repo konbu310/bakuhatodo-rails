@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  deadline: 2017-12-08
+  top: 1
+  left: 1
+  size: 1
+  user_id: 1
+
+two:
+  title: MyString
+  content: MyText
+  deadline: 2017-12-08
+  top: 1
+  left: 1
+  size: 1
+  user_id: 1

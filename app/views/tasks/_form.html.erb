@@ -1,0 +1,69 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+
+    <%= form_for(@task, remote: true) do |f| %>
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+          <ul>
+            <% @task.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">タスクの作成</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="field">
+        <%= f.label :title, class: "col-form-label", value: "タイトル" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :content, class: "col-form-label", value: "概要" %>
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :deadline, class: "col-form-label", value: "期限" %>
+        <p><%= f.date_select :deadline, class: "form-control" %></p>
+      </div>
+
+      <div class="field">
+        <p><%= f.hidden_field :top, class: "form-control" %></p>
+      </div>
+
+      <div class="field">
+        <p><%= f.hidden_field :left, class: "form-control" %></p>
+      </div>
+
+      <div class="field">
+        <p><%= f.hidden_field :width, class: "form-control" %></p>
+      </div>
+
+      <div class="field">
+        <p><%= f.hidden_field :height, class: "form-control" %></p>
+      </div>
+
+      <div class="field">
+        <p><%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %></p>
+      </div>
+      
+    </div>
+
+    <div class="modal-footer actions">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+      <%= f.submit  value: "作成", class: "btn btn-primary"%>
+    </div>
+    
+    <% end %>
+  </div>
+</div>

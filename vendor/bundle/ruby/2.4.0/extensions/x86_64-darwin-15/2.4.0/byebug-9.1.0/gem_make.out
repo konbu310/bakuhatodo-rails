@@ -1,0 +1,19 @@
+current directory: /home/t16416ys/CNSiMac/Documents/script-lang/todo/vendor/bundle/ruby/2.4.0/gems/byebug-9.1.0/ext/byebug
+/opt/homebrew/opt/ruby/bin/ruby -r ./siteconf20171208-38562-wdoybo.rb extconf.rb
+creating Makefile
+
+current directory: /home/t16416ys/CNSiMac/Documents/script-lang/todo/vendor/bundle/ruby/2.4.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/t16416ys/CNSiMac/Documents/script-lang/todo/vendor/bundle/ruby/2.4.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /home/t16416ys/CNSiMac/Documents/script-lang/todo/vendor/bundle/ruby/2.4.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20171208-38562-e2r7eo/byebug
