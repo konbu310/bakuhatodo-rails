@@ -1,0 +1,15 @@
+current directory: /Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+/Users/yuya/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20171227-4640-1kr4nnp.rb extconf.rb
+creating Makefile
+
+current directory: /Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20171227-4640-1j8pb7b/bindex

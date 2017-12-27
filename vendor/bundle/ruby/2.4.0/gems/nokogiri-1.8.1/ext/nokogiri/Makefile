@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /opt/homebrew/Cellar/ruby/2.4.0/include/ruby-2.4.0
+topdir = /Users/yuya/.rbenv/versions/2.4.0/include/ruby-2.4.0
 hdrdir = $(topdir)
-arch_hdrdir = /opt/homebrew/Cellar/ruby/2.4.0/include/ruby-2.4.0/x86_64-darwin15
+arch_hdrdir = /Users/yuya/.rbenv/versions/2.4.0/include/ruby-2.4.0/x86_64-darwin15
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/opt/homebrew/Cellar/ruby/2.4.0
+prefix = $(DESTDIR)/Users/yuya/.rbenv/versions/2.4.0
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -30,10 +30,10 @@ sitehdrdir = $(rubyhdrdir)/site_ruby
 rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
-vendordir = $(DESTDIR)/opt/homebrew/lib/ruby/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20171208-38562-1xmbeb6
-sitelibdir = $(DESTDIR)./.gem.20171208-38562-1xmbeb6
-sitedir = $(DESTDIR)/opt/homebrew/lib/ruby/site_ruby
+vendordir = $(rubylibprefix)/vendor_ruby
+sitearchdir = $(DESTDIR)./.gem.20171227-4640-1uqnk5u
+sitelibdir = $(DESTDIR)./.gem.20171227-4640-1uqnk5u
+sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
 sitearchincludedir = $(includedir)/$(sitearch)
@@ -65,9 +65,9 @@ archdir = $(rubyarchdir)
 
 CC = clang
 CXX = clang++
-LIBRUBY = $(LIBRUBY_SO)
+LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
-LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
+LIBRUBYARG_SHARED = 
 LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static -framework CoreFoundation
 empty =
 OUTFLAG = -o $(empty)
@@ -81,13 +81,13 @@ optflags = -O3 -fno-fast-math
 debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens
 CCDLFLAGS = -fno-common
-CFLAGS   = $(CCDLFLAGS) $(cflags)  -fno-common -pipe     $(ARCH_FLAG)
-INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) -I/usr/include/libxml2 -I/usr/include/libxml2 -I/usr/include/libxml2
+CFLAGS   = $(CCDLFLAGS)  -O3 -Wno-error=shorten-64-to-32  -pipe  -DNOKOGIRI_USE_PACKAGED_LIBRARIES $(ARCH_FLAG)
+INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_XMLPARSEDOC -DHAVE_XSLTPARSESTYLESHEETDOC -DHAVE_EXSLTFUNCREGISTER -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS  -I/opt/homebrew/opt/libyaml/include -I/opt/homebrew/opt/openssl/include -I/opt/homebrew/opt/readline/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
-CXXFLAGS = $(CCDLFLAGS) $(cxxflags)    $(ARCH_FLAG)
-ldflags  = -L. -fstack-protector -L/opt/homebrew/lib -L/usr/local/lib -L/opt/homebrew/opt/libyaml/lib -L/opt/homebrew/opt/openssl/lib -L/opt/homebrew/opt/readline/lib   
-dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -L/opt/homebrew/opt/libyaml/lib -L/opt/homebrew/opt/openssl/lib -L/opt/homebrew/opt/readline/lib 
+CPPFLAGS = -DHAVE_ICONV_H -DHAVE_XMLPARSEDOC -DHAVE_XSLTPARSESTYLESHEETDOC -DHAVE_EXSLTFUNCREGISTER -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxslt/1.1.30/include -I/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5/include/libxml2 -I/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5/include/libxml2 -I/Users/yuya/.rbenv/versions/2.4.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags) "-DNOKOGIRI_LIBXML2_PATH=\"/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5\"" "-DNOKOGIRI_LIBXML2_PATCHES=\"\"" "-DNOKOGIRI_LIBXSLT_PATH=\"/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxslt/1.1.30\"" "-DNOKOGIRI_LIBXSLT_PATCHES=\"\""
+CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
+ldflags  = -L. -L/Users/yuya/.rbenv/versions/2.4.0/lib  -fstack-protector -L/usr/local/lib
+dldflags = -L/Users/yuya/.rbenv/versions/2.4.0/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -dynamic -bundle
@@ -96,7 +96,7 @@ AR = ar
 EXEEXT = 
 
 RUBY_INSTALL_NAME = $(RUBY_BASE_NAME)
-RUBY_SO_NAME = ruby.2.4.0
+RUBY_SO_NAME = ruby
 RUBYW_INSTALL_NAME = 
 RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
@@ -122,8 +122,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir) /opt/homebrew/opt/libyaml/lib /opt/homebrew/opt/openssl/lib /opt/homebrew/opt/readline/lib
-LIBPATH =  -L. -L$(libdir) -L/opt/homebrew/opt/libyaml/lib -L/opt/homebrew/opt/openssl/lib -L/opt/homebrew/opt/readline/lib
+libpath = . $(libdir) /Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5/lib /Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxslt/1.1.30/lib /opt/local/lib
+LIBPATH =  -L. -L$(libdir) -L/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5/lib -L/Users/yuya/Documents/SFC/2年/2.秋学期/23-スクリプト言語プログラミング（Ruby）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxslt/1.1.30/lib -L/opt/local/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -134,7 +134,7 @@ extout =
 extout_prefix = 
 target_prefix = /nokogiri
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED)  -lxml2 -lxslt -lxml2 -lz -lpthread -licucore -lm -lxml2 -lexslt -lxslt -lxml2 -lz -lpthread -licucore -lm -lxml2 -lpthread -ldl -lobjc  
+LIBS =  /Users/yuya/Documents/SFC/2\年/2.\秋\学\期/23-\ス\ク\リ\プ\ト\言\語\プ\ロ\グ\ラ\ミ\ン\グ\（Ruby\）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxslt/1.1.30/lib/libexslt.a -lm -liconv -lpthread -llzma -lz /Users/yuya/Documents/SFC/2\年/2.\秋\学\期/23-\ス\ク\リ\プ\ト\言\語\プ\ロ\グ\ラ\ミ\ン\グ\（Ruby\）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5/lib/libxml2.a /Users/yuya/Documents/SFC/2\年/2.\秋\学\期/23-\ス\ク\リ\プ\ト\言\語\プ\ロ\グ\ラ\ミ\ン\グ\（Ruby\）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxslt/1.1.30/lib/libxslt.a -lm -liconv -lpthread -llzma -lz /Users/yuya/Documents/SFC/2\年/2.\秋\学\期/23-\ス\ク\リ\プ\ト\言\語\プ\ロ\グ\ラ\ミ\ン\グ\（Ruby\）/bakuhatodo-rails/vendor/bundle/ruby/2.4.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.6.0/libxml2/2.9.5/lib/libxml2.a -llzma -lpthread -ldl -lobjc  
 ORIG_SRCS = html_document.c html_element_description.c html_entity_lookup.c html_sax_parser_context.c html_sax_push_parser.c nokogiri.c xml_attr.c xml_attribute_decl.c xml_cdata.c xml_comment.c xml_document.c xml_document_fragment.c xml_dtd.c xml_element_content.c xml_element_decl.c xml_encoding_handler.c xml_entity_decl.c xml_entity_reference.c xml_io.c xml_libxml2_hacks.c xml_namespace.c xml_node.c xml_node_set.c xml_processing_instruction.c xml_reader.c xml_relax_ng.c xml_sax_parser.c xml_sax_parser_context.c xml_sax_push_parser.c xml_schema.c xml_syntax_error.c xml_text.c xml_xpath_context.c xslt_stylesheet.c
 SRCS = $(ORIG_SRCS) 
 OBJS = html_document.o html_element_description.o html_entity_lookup.o html_sax_parser_context.o html_sax_push_parser.o nokogiri.o xml_attr.o xml_attribute_decl.o xml_cdata.o xml_comment.o xml_document.o xml_document_fragment.o xml_dtd.o xml_element_content.o xml_element_decl.o xml_encoding_handler.o xml_entity_decl.o xml_entity_reference.o xml_io.o xml_libxml2_hacks.o xml_namespace.o xml_node.o xml_node_set.o xml_processing_instruction.o xml_reader.o xml_relax_ng.o xml_sax_parser.o xml_sax_parser_context.o xml_sax_push_parser.o xml_schema.o xml_syntax_error.o xml_text.o xml_xpath_context.o xslt_stylesheet.o
@@ -623,4 +623,4 @@ xslt_stylesheet.o: xslt_stylesheet.c xslt_stylesheet.h nokogiri.h	\
 all: clean-ports
 
 clean-ports: $(DLLIB)
-	-$(Q)$(RUBY) $(srcdir)/extconf.rb --clean --disable-static
+	-$(Q)$(RUBY) $(srcdir)/extconf.rb --clean --enable-static
