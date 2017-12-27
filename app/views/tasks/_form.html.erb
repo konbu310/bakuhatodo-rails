@@ -38,6 +38,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :color, class: "col-form-label", value: "色" %>
+        <p><%= f.select(:color, [['青','primary'], ['赤','danger'], ['緑','success'], ['黃','warning'], ['白','light'], ['黒','dark']], class:"form-control") %></p>
+      </div>
+
+      <div class="field">
         <p><%= f.hidden_field :top, class: "form-control" %></p>
       </div>
 
@@ -61,7 +66,7 @@
 
     <div class="modal-footer actions">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-      <%= f.submit  value: "作成", class: "btn btn-primary"%>
+      <%= f.submit "作成", class: "btn btn-primary"%>
     </div>
     
     <% end %>

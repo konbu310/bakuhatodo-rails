@@ -37,7 +37,7 @@ nav {
   position: fixed;
   z-index: 100;
   width: 100vw;
-  height: 5vh;
+  height: 7vh;
   border-bottom: 1px solid black;
 }
 
@@ -51,4 +51,18 @@ p span {
 
 nav a.btn {
 font-size: 1.5vh;
+}
+
+
+div#area {
+  top: 7vh;
+  height: 93vh;
+  width: 100vw;
+  overflow: hidden;
+  position: fixed;
+}
+
+div.panel {
+  display: inline-block;
+  position: absolute;
 }

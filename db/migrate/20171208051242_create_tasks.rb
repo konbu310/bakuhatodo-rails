@@ -8,6 +8,7 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.integer :left
       t.integer :width
       t.integer :height
+      t.string :color
       t.integer :user_id
 
       t.timestamps

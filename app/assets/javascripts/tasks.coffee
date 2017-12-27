@@ -3,14 +3,18 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('.panel').draggable stop: (event, ui) ->
-    id = $(this).attr('id')
-    dragEvent id
-    return
-  $('.panel').resizable stop: (event, ui) ->
-    id = $(this).attr('id')
-    resizeEvent id
-    return
+  $('.panel').draggable
+    containment: 'parent' 
+    stop: (event, ui) ->
+      id = $(this).attr('id')
+      dragEvent id
+      return
+  $('.panel').resizable
+    handles: 'se'
+    stop: (event, ui) ->
+      id = $(this).attr('id')
+      resizeEvent id
+      return
   return
 
 getLeft = (id) ->

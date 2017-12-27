@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171226041841) do
     t.integer  "left"
     t.integer  "width"
     t.integer  "height"
+    t.string   "color"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
