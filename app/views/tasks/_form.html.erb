@@ -38,8 +38,10 @@
       </div>
 
       <div class="field">
-        <%= f.label :color, class: "col-form-label", value: "色" %>
-        <p><%= f.select(:color, [['青','primary'], ['赤','danger'], ['緑','success'], ['黃','warning'], ['白','light'], ['黒','dark']], class:"form-control") %></p>
+        <p><%= f.label :color, class: "col-form-label", value: "優先順位" %></p>
+        <label><%= f.radio_button :color, 'danger', class: "form-control" %>高</label>
+        <label><%= f.radio_button :color, 'primary', class: "form-control" %>中</label>
+        <label><%= f.radio_button :color, 'success', class: "form-control" %>低</label>
       </div>
 
       <div class="field">

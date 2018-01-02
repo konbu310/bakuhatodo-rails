@@ -1,5 +1,5 @@
-<div class="card border-<%= task.color %> mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;　position: fixed;">
-    <div class="card-header"><%= task.deadline %></div>
+<div class="card border-<%= task.color %> mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;">
+    <div class="card-header"><span><%= task.deadline %></span></div>
     <div class="card-body">
       <h4 class="card-title"><%= task.title %></h4>
       <p class="card-text"><%= task.content %></p>

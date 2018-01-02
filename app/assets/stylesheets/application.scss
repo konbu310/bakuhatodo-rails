@@ -30,6 +30,7 @@ html {
 body {
   font-size: 1.4em;
   overflow: hidden;
+  font-family: 'Osaka';
 }
 
 nav {
@@ -37,11 +38,11 @@ nav {
   position: fixed;
   z-index: 100;
   width: 100vw;
-  height: 7vh;
-  border-bottom: 1px solid black;
+  height: 6vh;
 }
 
 p.navbar-brand {
+  top: 3vh;
   font-size: 2vh;
 }
 
@@ -50,13 +51,13 @@ p span {
 }
 
 nav a.btn {
-font-size: 1.5vh;
+font-size: 2vh;
 }
 
 
 div#area {
-  top: 7vh;
-  height: 93vh;
+  top: 6vh;
+  height: 96vh;
   width: 100vw;
   overflow: hidden;
   position: fixed;
@@ -65,4 +66,41 @@ div#area {
 div.panel {
   display: inline-block;
   position: absolute;
+}
+
+label {
+  display: inline-block;
+}
+
+div.panel {
+     height: 15vh;
+     width: 15vw;
+}
+
+.card {
+
+}
+
+.card-header {
+}
+
+.card-title {
+}
+
+.card-text {
+}
+
+p a {
+  color: black;
+  text-decoration: none;
+  
+  &:hover {
+    color: black;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+}
+
+.ui-resizable-helper {
+  border: 2px dotted #00F;
 }

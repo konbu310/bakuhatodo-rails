@@ -4,13 +4,16 @@
 
 $ ->
   $('.panel').draggable
-    containment: 'parent' 
+    containment: 'parent'
     stop: (event, ui) ->
       id = $(this).attr('id')
       dragEvent id
       return
   $('.panel').resizable
+    animate: true
+    helper: "ui-resizable-helper"
     handles: 'se'
+    containment: 'parent'
     stop: (event, ui) ->
       id = $(this).attr('id')
       resizeEvent id
@@ -42,7 +45,6 @@ pxTovh = (num) ->
   h = $(window).height()
   h = parseInt(h)
   String(Math.round(num*(100/h)))
-
 
 dragEvent = (id) ->
   left = pxTovw(getLeft(id))

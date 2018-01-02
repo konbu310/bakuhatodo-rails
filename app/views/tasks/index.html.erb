@@ -1,12 +1,12 @@
 <nav class="navbar navbar-light bg-light">
-  <p class="navbar-brand"><span>爆破</span> ToDo</p>
- <%= link_to '新規タスク', new_task_path, remote: true, class: "btn btn-outline-primary" %>
+  <p class="navbar-brand"><span>爆破</span>ToDo</p>
+ <%= link_to '新規タスク', new_task_path, remote: true, class: "btn btn-outline-dark" %>
 </nav>
 
 <div id='area'>
 <% @tasks.each do |task| %>
   <div class="card border-<%= task.color %> mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;">
-    <div class="card-header"><%= task.deadline %></div>
+    <div class="card-header text-fill"><span><%= task.deadline %></span></div>
     <div class="card-body">
       <h4 class="card-title"><%= task.title %></h4>
       <p class="card-text"><%= task.content %></p>
