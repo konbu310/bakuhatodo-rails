@@ -1,0 +1,92 @@
+<% @tasks.each do |task| %>
+  <div class="card text-white bg-<%= task.color %> mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;">
+    <div class="card-header text-fill">
+      <span><%= task.deadline %></span>
+      <span style="float: right;"><%= link_to '爆破', task, method: :delete, data:
+          { 
+            title: "本当に爆破してよろしいですか?",
+            confirm: "達成していないタスクの爆破はやめましょう。",
+            commit: "爆破！",
+            cancel: "やめる"
+          }, remote: true, class: "btn btn-outline-light task_delete"  %>
+      </span>
+      <span style="float: right;">　</span>
+      <span style="float: right;"><%= link_to '編集', edit_task_path(task), remote: true , class: "btn btn-outline-light" %></span>
+    </div>
+      <div class="card-title"><%= task.title %></div>
+      <div class="card-text"><%= task.content %></div>
+  </div>
+<% end %>
+
+<script>
+var dragEvent, getContentDiagonal, pxTovh, pxTovw, resizeEvent;
+
+$(function() {
+  $('div.card-title').fitText(1.0);
+  $('div.card-text').fitText(2.5);
+  $('.panel').draggable({
+    containment: 'parent',
+    stop: function(event, ui) {
+      var id, pos;
+      pos = ui.position;
+      id = $(this).attr('id');
+      console.log(pos, id);
+      dragEvent(pos, id);
+    }
+  });
+  $('.panel').resizable({
+    handles: 'se',
+    containment: 'parent',
+    resize: function(event, ui) {},
+    stop: function(event, ui) {
+      var id, siz;
+      id = $(this).attr('id');
+      siz = ui.size;
+      console.log(siz, id);
+      resizeEvent(siz, id);
+    }
+  });
+});
+
+getContentDiagonal = function() {
+  var contentHeight, contentWidth;
+  contentWidth = $(".card-title").width();
+  contentHeight = $(".card-title").height();
+  return contentWidth * contentWidth + contentHeight * contentHeight;
+};
+
+pxTovw = function(num) {
+  var w;
+  w = $(window).width();
+  w = parseInt(w);
+  return String(Math.round(num * (100 / w)));
+};
+
+pxTovh = function(num) {
+  var h;
+  h = $(window).height();
+  h = parseInt(h);
+  return String(Math.round(num * (100 / h)));
+};
+
+dragEvent = function(pos, id) {
+  $.post('/position_update', {
+    id: id,
+    top: pxTovh(pos.top),
+    left: pxTovw(pos.left)
+  }, function(data) {
+    console.log('ポジション保存');
+  });
+};
+
+resizeEvent = function(siz, id) {
+  $.post('/size_update', {
+    id: id,
+    width: pxTovw(siz.width),
+    height: pxTovh(siz.height)
+  }, function(data) {
+    console.log('サイズ保存');
+  });
+};
+
+</script>
