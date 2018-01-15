@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require popper
 //= require bootstrap-sprockets
 //= require data-confirm-modal

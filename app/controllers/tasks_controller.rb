@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+
   end
 
   # GET /tasks/new
@@ -25,35 +26,37 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-        format.js   { @status = "success"}
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-        format.js   { @status = "fail"}
-      end
-    end
+    @task = Task.create(task_params)
+    @tasks = current_user.tasks.all
+    # respond_to do |format|
+    #   if @task.save
+    #     format.html { redirect_to @task, notice: 'Task was successfully created.' }
+    #     format.json { render :show, status: :created, location: @task }
+    #     format.js   { @status = "success"}
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @task.errors, status: :unprocessable_entity }
+    #     format.js   { @status = "fail"}
+    #   end
+    # end
   end
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-        format.js { @status = "success"}
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-        format.js { @status = "fail"}
-      end
-    end
+    @task.update(task_params)
+    @tasks = current_user.tasks.all
+    # respond_to do |format|
+    #   if @task.update(task_params)
+    #     format.html { redirect_to "/tasks", notice: 'Task was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @task }
+    #     format.js { @status = "success"}
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @task.errors, status: :unprocessable_entity }
+    #     format.js { @status = "fail"}
+    #   end
+    # end
   end
 
   # 要素がドラッグされた時
@@ -74,10 +77,11 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url }
-      format.json { head :no_content }
-    end
+    render :json => {:task => @task}
+    # respond_to do |format|
+    #   format.html { redirect_to tasks_url }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

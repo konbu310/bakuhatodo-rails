@@ -4,26 +4,7 @@
 </nav>
 
 <div id='area'>
-<% @tasks.each do |task| %>
-  <div class="card border-<%= task.color %> mb-3 panel" id="<%= task.id %>" style="top: <%= task.top %>vh; left: <%= task.left %>vw; width: <%= task.width %>vw; height: <%= task.height %>vh;">
-    <div class="card-header text-fill"><span><%= task.deadline %></span></div>
-    <div class="card-body">
-      <h4 class="card-title"><%= task.title %></h4>
-      <p class="card-text"><%= task.content %></p>
-      <p>
-        <%= link_to '詳細', task %>
-        <%= link_to '編集', edit_task_path(task), remote: true %>
-        <%= link_to '爆破', task, method: :delete, data:
-          { 
-            title: "本当に爆破してよろしいですか?",
-            confirm: "やり遂げていないタスクを爆破するのはやめましょう。",
-            commit: "爆破！",
-            cancel: "やめる"
-          } %>
-      </p>
-    </div>
-  </div>
-<% end %>
+  <%= render "index" %>
 </div>
 
 <div id="new_task_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
