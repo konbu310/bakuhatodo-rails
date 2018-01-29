@@ -1,24 +1,12 @@
-# README
+# 爆破ToDo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[デモ](http://ipl-rails.sfc.keio.ac.jp/t16416ys/bakuhatodo/)（適当なメアドとパスワード設定すると使用できます。）
 
-Things you may want to cover:
+## ◇ 理念
+  ToDoアプリに必要なのは充実したタスク管理機能よりも、達成感を得られる機能だと思う。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ◇　使用方法
+1. ログインする
+2. 右上の新規タスクボタンからタスク作成
+3. リサイズしたりドラッグしたりして管理
+4. 完遂したら、爆破ボタンで爆破
